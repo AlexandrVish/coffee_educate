@@ -1,4 +1,6 @@
 using Coffee.Data;
+using Coffee.Model;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +18,10 @@ namespace Coffee
                 options.UseNpgsql(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddRazorPages();
+            builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
@@ -42,6 +45,10 @@ namespace Coffee
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
             app.Run();
