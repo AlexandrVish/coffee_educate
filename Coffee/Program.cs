@@ -35,6 +35,7 @@ namespace Coffee
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddTransient<NewsRepository>();
+            builder.Services.AddTransient<DataRepository>();
 
             var app = builder.Build();
 

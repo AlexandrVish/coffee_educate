@@ -10,7 +10,7 @@ namespace Coffee.Controllers
 {
     public class HomeController: Controller
     {
-        private NewsRepository _newsRepository;
+        private readonly NewsRepository _newsRepository;
 
         public HomeController(NewsRepository newsRepository)
         {

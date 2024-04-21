@@ -1,0 +1,46 @@
+﻿@model Coffee.Model.Entities.News
+@{
+    ViewData["Title"] = "Create news";
+}
+
+<div class="">
+    <h1 class="display-4">Edit news</h1>
+
+    <form method="post" action="">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" class="form-control" asp-for="Title">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Text</label>
+            @* <input type="text" class="form-control" asp-for="Text"> *@
+            <textarea class="form-control" rows="5" asp-for="Text"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Publication date</label>
+            <input type="text" class="form-control date" id="publicationDateInput" asp-for="Date">
+        </div>
+
+        <div class="form-check form-switch">
+            <label class="form-check-label">Is active</label>
+            <input type="checkbox" checked="checked" class="form-check-input" asp-for="IsActive">
+        </div>
+
+        <br />
+        <br />
+
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </form>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('#publicationDateInput').datepicker
+            ({
+                format: 'dd.mm.yyyy'
+            })
+    </script>
+}

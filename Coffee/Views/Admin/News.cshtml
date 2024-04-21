@@ -2,14 +2,36 @@
     ViewData["Title"] = "News";
 }
 
-<div class="text-center">
+<div class="">
     <h1 class="display-4">News</h1>
-    <ul>
+    <a href="/admin/news/createNews" type="button" class="btn btn-primary">Create news</a>
+    <br />
+    <br />
+    <br />
+
+    <table cellpadding="10">
+        <tr>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Date</th>
+            <th>AuthorId</th>
+            <th>Create date</th>
+            <th>Is active</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
         @foreach (var item in Model)
         {
-            <li>
-                <span>@item.Title</span><span>@item.Text</span><span>@item.Date.ToString("yyyy.mm.dd hh:mm")</span><span>@item.AuthorId</span><span>@item.CreateDate.ToString("yyyy.mm.dd hh:mm")</span><span>@item.IsActive</span>
-            </li>
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Text</td>
+                <td>@item.Date.ToString("yyyy.mm.dd hh:mm")</td>
+                <td>@item.AuthorId</td>
+                <td>@item.CreateDate.ToString("yyyy.mm.dd hh:mm")</td>
+                <td>@item.IsActive</td>
+                <td><a href="/admin/news/edit/@item.Id">edit</a></td>
+                <td><a href="/admin/news/delete/@item.Id">delete</a></td>
+            </tr>
         }
-    </ul>
+    </table>
 </div>
